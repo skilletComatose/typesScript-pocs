@@ -1,3 +1,4 @@
+# Crear el projecto y instalar
 npm init -y 
 1. npm install --save-dev eslint @eslint/js typescript typescript-eslint
 
@@ -14,5 +15,19 @@ npm i -D @stylistic/eslint-plugin    --> reglas de estili : https://eslint.style
 npx ts-node src/test.ts
 
 
+## como instalar pretier
 
-en el package json toca quitar y poner   "type": "module", dependiendo el caso 
+es una herramienta para formatear codigo opinionada (que por defecto trae reglas)
+ "[typescript]": {
+     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+## en el settings.json
+    "editor.formatOnSave": true   : para que se formatee el condigo automatizamente al guardar
+    "prettier.requireConfig": true, : que solo lo haga cuando tenga un archivo de configuracion de prettier
+
+
+
+    npm install --save-dev --save-exact prettier
+    node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+    node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"

@@ -1,5 +1,5 @@
-const typescriptEslint = require('@typescript-eslint/eslint-plugin');
-const typescriptParser = require('@typescript-eslint/parser');
+const typescriptEslint = require('@typescript-eslint/eslint-plugin')
+const typescriptParser = require('@typescript-eslint/parser')
 
 module.exports = [
   {
