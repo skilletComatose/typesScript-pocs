@@ -1,13 +1,13 @@
-import js from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import globals from 'globals';
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
+import globals from "globals";
 
 export default tseslint.config(
   {
-    ignores: ['**/node_modules/**', '**/dist/**', '**/build/**'],
+    ignores: ["**/node_modules/**", "**/dist/**", "**/build/**"],
   },
   {
-    files: ['**/*.{js,mjs,cjs,ts,tsx}'],
+    files: ["**/*.{js,mjs,cjs,ts,tsx}"],
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
@@ -19,25 +19,26 @@ export default tseslint.config(
         ...globals.es2022,
       },
       ecmaVersion: 2022,
-      sourceType: 'module',
+      sourceType: "module",
       parser: tseslint.parser,
       parserOptions: {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
         tsconfigRootDir: import.meta.dirname,
       },
     },
     plugins: {
-      '@typescript-eslint': tseslint.plugin,
+      "@typescript-eslint": tseslint.plugin,
     },
     rules: {
-      "@typescript-eslint/no-explicit-any" : "warn"
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/consistent-type-assertions":  ["error", {  objectLiteralTypeAssertions: "allow-as-parameter"}]
     },
   },
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
       parserOptions: {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
         tsconfigRootDir: import.meta.dirname,
       },
     },

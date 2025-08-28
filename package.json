@@ -2,7 +2,7 @@
   "name": "typesscript",
   "version": "1.0.0",
   "description": "https://mugan86.medium.com/eslint-en-typescript-paso-a-paso-ab2255321fd",
-
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

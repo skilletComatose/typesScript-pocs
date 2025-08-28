@@ -9,3 +9,7 @@ npx eslint --init
 
 # Ejecutar un archivo específico
 npx ts-node src/test.ts
+
+
+
+en el package json toca quitar y poner   "type": "module", dependiendo el caso 
