@@ -1,8 +1,24 @@
 # Crear el projecto y instalar
-npm init -y 
-1. npm install --save-dev eslint @eslint/js typescript typescript-eslint
+```bash
+  npm init -y 
+  npm install --save-dev eslint @eslint/js typescript typescript-eslint
 
-eslin.config.mjs
+  # para inicial el lint -> eslin.config.mjs
+  npx eslint --init
+
+  # intalar ts-node para ejecutar ts desde el vscode
+  npm install -D ts-node
+  
+
+  # configuracion de prettier
+  npm install --save-dev --save-exact prettier
+  node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+  node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
+```
+ 
+
+
+
 
 # para inicial el lint
 npx eslint --init
@@ -18,13 +34,21 @@ npx ts-node src/test.ts
 ## como instalar pretier
 
 es una herramienta para formatear codigo opinionada (que por defecto trae reglas)
- "[typescript]": {
-     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+> para que formatee el archivo en vada save y tome el prettier como formater por defecto en ts
 
 ## en el settings.json
-    "editor.formatOnSave": true   : para que se formatee el condigo automatizamente al guardar
-    "prettier.requireConfig": true, : que solo lo haga cuando tenga un archivo de configuracion de prettier
+
+```json
+ "[typescript]": {
+     "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+  },
+  "prettier.requireConfig": true
+```
+"editor.formatOnSave": true   : para que se formatee el condigo automatizamente al guardar
+"prettier.requireConfig": true, : que solo lo haga cuando tenga un archivo de 
+
+# configuracion de prettier
 
 
 
