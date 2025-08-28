@@ -1,4 +1,4 @@
-import { filter, from, groupBy, GroupedObservable, map, mergeMap, Observable, reduce } from "rxjs";
+import { filter, from, groupBy, GroupedObservable, map, mergeMap, Observable, reduce } from 'rxjs';
 import { exchangeRates, MonthlySummary, Transaction } from './model/request';
 
 const transactions: Partial<Transaction>[] = [
@@ -10,16 +10,13 @@ const transactions: Partial<Transaction>[] = [
 ];
 
 
-
 const processOngroup = (obs$: GroupedObservable<string, Partial<Transaction>>) : Observable<MonthlySummary> => {
 
   return obs$.pipe(
     reduce((acc, value) => {
-      const currency = value.currency || 'Unknow'
+      const currency = value.currency || 'Unknow' 
       acc.month = acc.month || obs$.key;
-      if (!acc.totals[currency]) {
-        acc.totals[currency] = { originalTotal: 0, convertedTotalUSD: 0 }
-      }
+      acc.totals[currency] ??= { originalTotal: 0, convertedTotalUSD: 0 }
       acc.totals[currency].originalTotal += value.amount || 0
       acc.totals[currency].convertedTotalUSD = exchangeRates[currency] * acc.totals[currency].originalTotal
       return acc
@@ -28,15 +25,13 @@ const processOngroup = (obs$: GroupedObservable<string, Partial<Transaction>>) :
   )
 }
 
-
-
 from(transactions)
   .pipe(
-    filter(transaction => transaction.status === "completed"),
+    filter(transaction => transaction.status === 'completed'),
     filter(trx => trx.date != undefined),
     filter(trx => trx.date != null),
     map(trx => {
-      return { ...trx, date: trx.date!.slice(0, 7) }
+         return { ...trx, date: trx.date?.slice(0, 7) || '' }
     }),
     groupBy(trx => trx.date),
     mergeMap(groupTrx => processOngroup(groupTrx))

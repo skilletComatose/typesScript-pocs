@@ -2,7 +2,6 @@
   "name": "typesscript",
   "version": "1.0.0",
   "description": "https://mugan86.medium.com/eslint-en-typescript-paso-a-paso-ab2255321fd",
-  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.34.0",
+    "@stylistic/eslint-plugin": "^5.2.3",
     "@types/node": "^24.3.0",
     "eslint": "^9.34.0",
     "globals": "^16.3.0",
