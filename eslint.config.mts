@@ -1,6 +1,9 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import globals from 'globals';
+import prettierConfig from 'eslint-config-prettier';
+import stylistic from '@stylistic/eslint-plugin';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 export default tseslint.config(
 	{
@@ -20,7 +23,8 @@ export default tseslint.config(
 		extends: [
 			js.configs.recommended, 
 			...tseslint.configs.strict, 
-			...tseslint.configs.strictTypeChecked
+			...tseslint.configs.strictTypeChecked,
+			prettierConfig
 		],
 		languageOptions: {
 			globals: {
@@ -36,18 +40,16 @@ export default tseslint.config(
 			}
 		},
 		plugins: {
-			'@typescript-eslint': tseslint.plugin
+			'@typescript-eslint': tseslint.plugin,
+			'@stylistic': stylistic,
+			prettier: prettierPlugin
 		},
 		rules: {
 			'@typescript-eslint/restrict-template-expressions': 'off',
-			'@typescript-eslint/no-confusing-void-expression': [
-				'error',
-				{
-					ignoreArrowShorthand: true
-				}
-			],
+			'@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
 			'no-console': 'off',
-			'arrow-parens': ['error', 'as-needed']
+			'arrow-parens': ['error', 'as-needed'],
+			'@stylistic/newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }]
 		}
 	},
 	{
@@ -60,12 +62,7 @@ export default tseslint.config(
 		},
 		rules: {
 			'@typescript-eslint/restrict-template-expressions': 'off',
-			'@typescript-eslint/no-confusing-void-expression': [
-				'error',
-				{
-					ignoreArrowShorthand: true
-				}
-			]
+			'@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }]
 		}
 	}
 );

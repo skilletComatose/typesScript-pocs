@@ -3,7 +3,10 @@
   npm init -y 
   npm install --save-dev eslint @eslint/js typescript typescript-eslint
 
-  # para inicial el lint -> eslin.config.mjs
+  # plugin para manejar stilos de codigo 
+  npm install -D @stylistic/eslint-plugin 
+  
+  # para inicial el lint -> eslint.config.mts
   npx eslint --init
 
   # intalar ts-node para ejecutar ts desde el vscode
@@ -14,11 +17,31 @@
   npm install --save-dev --save-exact prettier
   node --eval "fs.writeFileSync('.prettierrc','{}\n')"
   node --eval "fs.writeFileSync('.prettierignore','# Ignore artifacts:\nbuild\ncoverage\n')"
+
+  npm install -D eslint-config-prettier
+  npm install -D eslint-plugin-prettier
 ```
- 
 
 
+# configurar eslint + prettier
+```bash
+npm i -D eslint-config-prettier
 
+```
+
+# en eslint.config.mts
+import stylistic from '@stylistic/eslint-plugin';
+
+```typescript
+  plugins: {
+			'@stylistic': stylistic # agregar esta linea en el apartado de plugins
+	},
+
+  # ejempo de una regla
+  rules: {
+    '@stylistic/newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }]
+  }
+```
 
 # para inicial el lint
 npx eslint --init
