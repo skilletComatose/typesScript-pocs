@@ -20,7 +20,15 @@
 
   npm install -D eslint-config-prettier
   npm install -D eslint-plugin-prettier
+
+  #configuracion para pruebas unitarias 
+  npm i -D jest ts-jest @types/jest
 ```
+
+
+
+#configuar jest  desde cero (solo en caso de que no tengas jest.config.js )
+npx ts-jest config:init 
 
 
 # configurar eslint + prettier
